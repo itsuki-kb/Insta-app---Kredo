@@ -1,0 +1,78 @@
+/* For small Icon in nav bar */
+.icon-sm{
+    font-size: 2rem;
+}
+
+/* image-lg delete post modal */
+/* Admin Posts page */
+.image-lg{
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+}
+
+/* like button */
+.fa-heart{
+    font-size: 1.5rem;
+}
+
+/* date of a post - body.blade.php */
+.xsmall{
+    font-size: 0.65rem;
+}
+
+/* Profile icon */
+.icon-lg{
+    font-size: 9rem;
+}
+
+/* Displaying pictures in Profile page */
+.grid-img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+/* avatar size of navbar and homepage */
+.avatar-sm{
+    width: 2rem;
+    height: 2rem;
+    object-fit: cover;
+}
+
+/* avatar size of profile image in Profile-Show, Profile-Edit */
+.avatar-lg{
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+}
+
+/* profile overview in Index page */
+/* icon in Profile Overview and Admin User page */
+.avatar-md{
+    width: 3.5rem;
+    height: 3.5rem;
+    object-fit: cover;
+}
+
+/* icon in Profile Overview and Admin User page */
+.icon-md{
+    font-size: 3.5rem;
+}
+
+.square-thumb {
+    width: 100%;
+    padding-top: 100%; /* 正方形にする魔法 */
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem; /* optional: 角丸 */
+}
+
+.square-thumb img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 中央をキープしてトリミング */
+}

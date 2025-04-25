@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row gx-5">
         {{-- POSTS --}}
-        <div class="col-8">
+        <div class="col-12 col-md-8 order-2 order-md-1">
             @forelse ($home_posts as $post)
                 <div class="card mb-4">
                     {{-- title --}}
@@ -27,9 +27,9 @@
         </div>
 
         {{-- PROFILE OVERVIEW + SUGGESTIONS --}}
-        <div class="col-4">
+        <div class="col-12 col-md-4 order-1 order-md-2">
             {{-- PROFILE OVERVIEW --}}
-            <div class="row align-items-center mb-5 shadow-sm rounded-3 py-3">
+            <div class="row align-items-center mb-3 mb-md-5 shadow-sm rounded-3 py-3">
                 {{-- Avatar --}}
                 <div class="col-auto">
                     <a href="{{ route('profile.show', Auth::user()->id) }}">
@@ -62,34 +62,36 @@
                 </div>
 
                 @foreach ($suggested_users as $user)
-                    <div class="row align-items-center mb-3">
-                        {{-- avatar --}}
-                        <div class="col-auto">
-                            <a href="{{ route('profile.show', $user->id) }}">
-                                @if ($user->avatar)
-                                    <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="rounded-circle avatar-sm">
-                                @else
-                                    <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
-                                @endif
-                            </a>
-                        </div>
+                    <div class="d-none d-md-block">
+                        <div class="row align-items-center mb-3">
+                            {{-- avatar --}}
+                            <div class="col-auto">
+                                <a href="{{ route('profile.show', $user->id) }}">
+                                    @if ($user->avatar)
+                                        <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="rounded-circle avatar-sm">
+                                    @else
+                                        <i class="fa-solid fa-circle-user text-secondary icon-sm"></i>
+                                    @endif
+                                </a>
+                            </div>
 
-                        {{-- name --}}
-                        <div class="col ps-0 text-truncate">
-                            <a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark fw-bold">
-                                {{ $user->name }}
-                            </a>
-                        </div>
+                            {{-- name --}}
+                            <div class="col ps-0 text-truncate">
+                                <a href="{{ route('profile.show', $user->id) }}" class="text-decoration-none text-dark fw-bold">
+                                    {{ $user->name }}
+                                </a>
+                            </div>
 
-                        {{-- follow button --}}
-                        <div class="col-auto">
-                            <form action="{{ route('follow.store', $user->id) }}" method="post">
-                                @csrf
+                            {{-- follow button --}}
+                            <div class="col-auto">
+                                <form action="{{ route('follow.store', $user->id) }}" method="post">
+                                    @csrf
 
-                                <button type="submit" class="border-0 bg-transparent p-0 text-primary btn-sm">
-                                    Follow
-                                </button>
-                            </form>
+                                    <button type="submit" class="border-0 bg-transparent p-0 text-primary btn-sm">
+                                        Follow
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -97,7 +99,7 @@
 
              {{-- Follow Requests --}}
              @if ($follow_requests)
-                <div class="row mt-5">
+                <div class="row mt-1 mt-md-5">
                     <div class="col-auto">
                         <p class="fw-bold text-secondary">Follow requests</p>
                     </div>

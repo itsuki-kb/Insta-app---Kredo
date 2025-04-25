@@ -1,6 +1,6 @@
 <div class="row">
     {{-- avatar/icon --}}
-    <div class="col-4">
+    <div class="col-md-4 mb-3 mb-md-0 ">
         {{-- display the avatar of the user --}}
         @if ($user->avatar)
             <img src="{{ $user->avatar }}" alt="{{ $user->name }}" class="rounded-circle p-1 shadow mx-auto avatar-lg">
@@ -9,7 +9,7 @@
         @endif
     </div>
 
-    <div class="col-8">
+    <div class="col-md-8">
         {{-- name & button(Edit, Follow) --}}
         <div class="row mb-3">
             {{-- name --}}

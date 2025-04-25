@@ -3,6 +3,16 @@
     font-size: 2rem;
 }
 
+/* icon in Profile Overview and Admin User page */
+.icon-md{
+    font-size: 3.5rem;
+}
+
+/* Profile icon */
+.icon-lg{
+    font-size: 9rem;
+}
+
 /* image-lg delete post modal */
 /* Admin Posts page */
 .image-lg{
@@ -10,7 +20,6 @@
     height: 9rem;
     object-fit: cover;
 }
-
 /* like button */
 .fa-heart{
     font-size: 1.5rem;
@@ -21,17 +30,6 @@
     font-size: 0.65rem;
 }
 
-/* Profile icon */
-.icon-lg{
-    font-size: 9rem;
-}
-
-/* Displaying pictures in Profile page */
-.grid-img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-}
 
 /* avatar size of navbar and homepage */
 .avatar-sm{
@@ -39,14 +37,6 @@
     height: 2rem;
     object-fit: cover;
 }
-
-/* avatar size of profile image in Profile-Show, Profile-Edit */
-.avatar-lg{
-    width: 9rem;
-    height: 9rem;
-    object-fit: cover;
-}
-
 /* profile overview in Index page */
 /* icon in Profile Overview and Admin User page */
 .avatar-md{
@@ -54,12 +44,20 @@
     height: 3.5rem;
     object-fit: cover;
 }
-
-/* icon in Profile Overview and Admin User page */
-.icon-md{
-    font-size: 3.5rem;
+/* avatar size of profile image in Profile-Show, Profile-Edit */
+.avatar-lg{
+    width: 9rem;
+    height: 9rem;
+    object-fit: cover;
+}
+/* Displaying pictures in Profile page */
+.grid-img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
 }
 
+/* Tag search page */
 .square-thumb {
     width: 100%;
     padding-top: 100%; /* 正方形にする魔法 */

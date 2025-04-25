@@ -65,20 +65,25 @@
                             @endif
                         @else
                             {{-- Home --}}
-                                <li class="nav-item" title="Home">
-                                    <a href="{{ route('index') }}" class="nav-link">
-                                        <i class="fa-solid fa-house text-dark icon-sm"></i>
-                                    </a>
-                                </li>
-                            {{-- Create Post --}}
-                            <li class="nav-item" title="Create Post">
-                                <a href="{{ route('post.create') }}" class="nav-link">
-                                    <i class="fa-solid fa-circle-plus text-dark icon-sm"></i>
+                            <li class="nav-item" title="Home">
+                                <a href="{{ route('index') }}" class="nav-link">
+                                    {{-- MD以上で表示される（通常のナビ） --}}
+                                    <i class="fa-solid fa-house text-dark icon-sm d-none d-md-inline"></i>
+                                    {{-- MD未満で表示される（ハンバーガーメニュー内） --}}
+                                    <span class="d-inline d-md-none">Home</span>
                                 </a>
                             </li>
 
-                            {{-- notifications --}}
-                            <li class="nav-item dropdown position-relative">
+                            {{-- Create Post --}}
+                            <li class="nav-item" title="Create Post">
+                                <a href="{{ route('post.create') }}" class="nav-link">
+                                    <i class="fa-solid fa-circle-plus text-dark icon-sm d-none d-md-inline"></i>
+                                    <span class="d-inline d-md-none">Create a post</span>
+                                </a>
+                            </li>
+
+                            {{-- notifications (Bigger then MD size) --}}
+                            <li class="nav-item dropdown position-relative d-none d-md-inline">
                                 <button id="account-dropdown" class="btn shadow-none nav-link" data-bs-toggle="dropdown">
                                     <i class="fa-solid fa-bell text-dark icon-sm"></i>
                                 </button>
@@ -120,6 +125,20 @@
                                 </div>
                             </li>
 
+                            {{-- Notifications - New Messages (Smartphone size) --}}
+                            <li class="nav-item d-inline d-md-none" title="notifications">
+                                <a href="{{ route('profile.notifications', Auth::user()->id) }}" class="dropdown-item nav-link">
+                                    View All {{ $notifications_count }} notification{{ $notifications_count == 1 ? 's' : '' }}
+                                </a>
+                            </li>
+
+                            {{-- Notifications - Follow requests (Smartphone size) --}}
+                            <li class="nav-item d-inline d-md-none" title="notifications">
+                                <a href="{{ route('requests') }}" class="dropdown-item nav-link">
+                                    {{ $requests_count }} follow request{{ $requests_count == 1 ? 's' : '' }}
+                                </a>
+                            </li>
+
                             {{-- Account --}}
                             <li class="nav-item dropdown">
                                 {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -128,10 +147,12 @@
 
                                 <button id="account-dropdown" class="btn shadow-none nav-link" data-bs-toggle="dropdown">
                                     @if (Auth::user()->avatar)
-                                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle avatar-sm">
+                                        <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" class="rounded-circle avatar-sm d-none d-md-inline">
                                     @else
-                                        <i class="fa-solid fa-circle-user text-dark icon-sm"></i>
+                                        <i class="fa-solid fa-circle-user text-dark icon-sm d-none d-md-inline"></i>
                                     @endif
+
+                                    <span class="d-inline d-md-none">Profile</span>
                                 </button>
 
 

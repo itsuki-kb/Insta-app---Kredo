@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function(){
         //Chats
         Route::get('/profile/{id}/chats', [ChatController::class, 'show'])->name('profile.chats');
         Route::post('/profile/{id}/chats/store', [ChatController::class, 'store'])->name('profile.chats.store');
+        Route::delete('/profile/chats/{chat_id}/destroy', [ChatController::class, 'destroy'])->name('profile.chats.destroy');
         //Notifications
         Route::get('/profile/{id}/notifications', [ProfileController::class, 'showNotifications'])->name('profile.notifications');
 

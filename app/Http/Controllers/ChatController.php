@@ -24,6 +24,7 @@ class ChatController extends Controller
         $user = $this->user->findOrFail($id);
 
         $chats = $this->chat
+                      ->withTrashed()
                       ->where(function ($query) use ($id) {
                           $query->where('sender_id', Auth::id())
                               ->orWhere('receiver_id', Auth::id());
@@ -47,7 +48,9 @@ class ChatController extends Controller
     public function store(Request $request, $id)
     {
         $request->validate([
-            'chat_message' => 'required|max:200'
+            'chat_message' => 'required|max:200',
+            'image' => 'nullable|mimes:jpg,jpeg,png,gif|max:1048'
+                                #multipurpose Internet Mail Extensions
         ],
         [
             'chat_message.required' => 'You cannot submit an empty message.',
@@ -57,9 +60,30 @@ class ChatController extends Controller
         $this->chat->sender_id      = Auth::user()->id;
         $this->chat->receiver_id    = $id;
         $this->chat->message        = $request->input('chat_message');
+
+        if($request->image){
+            $this->chat->image      = 'data:image/' . $request->image->extension() . ';base64,' . base64_encode(file_get_contents($request->image));
+                                    # Syntax: data:[content]/[type];base64,
+        }
+        
         $this->chat->save();
 
         return redirect()->back();
     }
+
+    public function destroy($chat_id)
+    {
+        $chat = $this->chat->findOrFail($chat_id);
+        $user = $this->user->findOrFail(Auth::user()->id);
+
+        if($chat->sender->id != $user->id){
+            return redirect()->back();
+        }
+
+        $chat->delete();
+
+        return redirect()->back();
+    }
+
 
 }

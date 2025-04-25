@@ -3,10 +3,11 @@
 @section('title', 'Profile')
 
 @section('content')
-@include('users.profile.header')
+    @include('users.profile.header')
 
     {{-- Show all posts here --}}
-    <div style="margin-top: 100px">
+    <div class="mt-3 mt-md-5">
+    {{-- <div style="margin-top: 100px"> --}}
         @can('ViewProfile', $user)
             @if ($user->posts->isNotEmpty())
             <div class="row">

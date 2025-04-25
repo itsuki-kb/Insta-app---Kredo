@@ -95,26 +95,32 @@
                     <div class="card-footer bg-white">
                         <form action="{{ route('profile.chats.store', $user->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
-                            {{-- Text --}}
-                            <div class="input-group my-3">
+
+                            {{-- テキストと画像アップロード --}}
+                            <div class="input-group my-3 align-items-center">
+                                {{-- カメラアイコンの画像ボタン --}}
+                                <label for="image" class="btn btn-outline-secondary mb-0">
+                                    <i class="fa-solid fa-image"></i>
+                                </label>
+
+                                {{-- ファイル選択（非表示） --}}
+                                <input type="file" name="image" id="image" class="d-none" accept="image/*">
+
+                                {{-- メッセージ入力 --}}
                                 <input type="text" name="chat_message" class="form-control" autofocus>
+
+                                {{-- 送信ボタン --}}
                                 <button type="submit" class="btn btn-outline-secondary">
                                     <i class="fa-solid fa-paper-plane"></i>
                                 </button>
                             </div>
 
-                             {{-- Image --}}
-                            <div class="mb-4">
-                                <label for="image" class="form-label text-secondary">Image(if any)</label>
-                                <input type="file" name="image" id="image" class="form-control" aria-describedby="image-info">
-                                <div class="form-text" id="image-info">
-                                    The acceptable formats are jpeg, jpg, png and gif only.
-                                    Max file is 1048Kb.
-                                </div>
-                                {{-- Error messages --}}
-                                @error('image')
-                                    <div class="text-danger small">{{ $message }}</div>
-                                @enderror
+                            {{-- 画像ファイル名の表示（下部） --}}
+                            <div class="text-secondary small mt-1" id="file-name" style="min-height: 1em;"></div>
+
+                            {{-- ファイル形式とサイズの注意 --}}
+                            <div class="form-text" id="image-info">
+                                The acceptable formats are jpeg, jpg, png and gif only. Max file is 1048Kb.
                             </div>
                         </form>
                     </div>
